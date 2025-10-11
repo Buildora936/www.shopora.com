@@ -1,8 +1,7 @@
-
 // Sélecteurs
 const authModalPro = document.getElementById('authModalPro');
-const loginBtnPro = document.getElementById('loginBtn'); // utiliser le même bouton header si voulu
-const signupBtnPro = document.getElementById('signupBtn');
+const loginBtnPro = document.getElementById('loginBtnPro');
+const signupBtnPro = document.getElementById('signupBtnPro');
 const closeAuthPro = document.getElementById('closeAuthPro');
 
 const showSignupProBtn = document.getElementById('showSignupPro');
