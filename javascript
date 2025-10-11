@@ -68,3 +68,44 @@ filterBtns.forEach(btn => {
 });
 faders.forEach(fader => fader.classList.add('fade-in'));
 faders.forEach(fader => appearOnScroll.observe(fader));
+// Boutons
+const loginBtn = document.getElementById('loginBtn');
+const signupBtn = document.getElementById('signupBtn');
+const loginModal = document.getElementById('loginModal');
+const signupModal = document.getElementById('signupModal');
+const closeLogin = document.getElementById('closeLogin');
+const closeSignup = document.getElementById('closeSignup');
+
+loginBtn.onclick = () => loginModal.style.display = 'block';
+signupBtn.onclick = () => signupModal.style.display = 'block';
+closeLogin.onclick = () => loginModal.style.display = 'none';
+closeSignup.onclick = () => signupModal.style.display = 'none';
+
+window.onclick = function(event) {
+  if (event.target == loginModal) loginModal.style.display = 'none';
+  if (event.target == signupModal) signupModal.style.display = 'none';
+};
+
+// Simuler inscription et login
+const signupSubmit = document.getElementById('signupSubmit');
+const loginSubmit = document.getElementById('loginSubmit');
+
+signupSubmit.onclick = () => {
+  const user = document.getElementById('signupUser').value;
+  const pass = document.getElementById('signupPass').value;
+  if(user && pass){
+    localStorage.setItem('shoporaUser', user);
+    localStorage.setItem('shoporaPass', pass);
+    alert('Inscription réussie !');
+    signupModal.style.display = 'none';
+  } else alert('Remplissez tous les champs !');
+};
+
+loginSubmit.onclick = () => {
+  const user = document.getElementById('loginUser').value;
+  const pass = document.getElementById('loginPass').value;
+  if(user === localStorage.getItem('shoporaUser') && pass === localStorage.getItem('shoporaPass')){
+    alert('Connexion réussie !');
+    loginModal.style.display = 'none';
+  } else alert('Nom d’utilisateur ou mot de passe incorrect !');
+};
