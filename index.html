@@ -8,12 +8,36 @@
   <link rel="stylesheet" ="style.css">
 </head>
 <body>
-
-
 <!-- BOUTONS HEADER -->
 <button id="loginBtnPro" type="button">Connexion</button>
 <button id="signupBtnPro" type="button">Inscription</button>
 
+<!-- AUTH MODAL PRO -->
+<div id="authModalPro" class="auth-modal-pro">
+  <div class="auth-modal-content-pro">
+    <span class="close" id="closeAuthPro">&times;</span>
+    
+    <div class="auth-forms-pro">
+      <!-- LOGIN -->
+      <div class="login-form-pro">
+        <h2>Connexion</h2>
+        <input type="text" id="loginUserPro" placeholder="Nom d'utilisateur">
+        <input type="password" id="loginPassPro" placeholder="Mot de passe">
+        <button id="loginSubmitPro">Se connecter</button>
+        <p>Pas de compte ? <span id="showSignupPro" style="cursor:pointer;color:#ff6b6b;">Inscrivez-vous</span></p>
+      </div>
+      
+      <!-- SIGNUP -->
+      <div class="signup-form-pro">
+        <h2>Inscription</h2>
+        <input type="text" id="signupUserPro" placeholder="Nom d'utilisateur">
+        <input type="password" id="signupPassPro" placeholder="Mot de passe">
+        <button id="signupSubmitPro">S’inscrire</button>
+        <p>Déjà un compte ? <span id="showLoginPro" style="cursor:pointer;color:#ff6b6b;">Connexion</span></p>
+      </div>
+    </div>
+  </div>
+</div>
 <
 <!-- HEADER -->
 <header>
