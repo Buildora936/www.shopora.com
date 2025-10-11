@@ -280,3 +280,79 @@ footer a:hover {
   opacity: 1;
   transform: translateY(0);
 }
+/* Modal pro */
+.auth-modal-pro {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-modal-content-pro {
+  background: #fff;
+  border-radius: 12px;
+  width: 350px;
+  max-width: 90%;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+.auth-modal-content-pro h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff6b6b;
+}
+
+.auth-modal-content-pro input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.auth-modal-content-pro button {
+  width: 100%;
+  padding: 12px;
+  background: #ff6b6b;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.auth-modal-content-pro button:hover {
+  background: #ff4757;
+}
+
+.auth-modal-content-pro p {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.auth-modal-content-pro span {
+  color: #ff6b6b;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Afficher login/sign up */
+.login-form-pro { display: block; }
+.signup-form-pro { display: none; }
+
+/* Close button */
+.auth-modal-content-pro .close {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #333;
+}
