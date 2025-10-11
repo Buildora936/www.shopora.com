@@ -5,40 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopora - Vente de sites web</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" ="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- BOUTONS HEADER -->
-<button id="loginBtnPro" type="button">Connexion</button>
-<button id="signupBtnPro" type="button">Inscription</button>
 
-<!-- AUTH MODAL PRO -->
-<div id="authModalPro" class="auth-modal-pro">
-  <div class="auth-modal-content-pro">
-    <span class="close" id="closeAuthPro">&times;</span>
-    
-    <div class="auth-forms-pro">
-      <!-- LOGIN -->
-      <div class="login-form-pro">
-        <h2>Connexion</h2>
-        <input type="text" id="loginUserPro" placeholder="Nom d'utilisateur">
-        <input type="password" id="loginPassPro" placeholder="Mot de passe">
-        <button id="loginSubmitPro">Se connecter</button>
-        <p>Pas de compte ? <span id="showSignupPro" style="cursor:pointer;color:#ff6b6b;">Inscrivez-vous</span></p>
-      </div>
-      
-      <!-- SIGNUP -->
-      <div class="signup-form-pro">
-        <h2>Inscription</h2>
-        <input type="text" id="signupUserPro" placeholder="Nom d'utilisateur">
-        <input type="password" id="signupPassPro" placeholder="Mot de passe">
-        <button id="signupSubmitPro">S’inscrire</button>
-        <p>Déjà un compte ? <span id="showLoginPro" style="cursor:pointer;color:#ff6b6b;">Connexion</span></p>
-      </div>
-    </div>
-  </div>
-</div>
-<
 <!-- HEADER -->
 <header>
   <div class="container">
@@ -70,19 +40,19 @@
       <img src="produit1.jpg" alt="Produit 1">
       <h3>Site vitrine</h3>
       <p>€49.99</p>
-      <a href="#" class="btn">Acheter</a>
+      <a href="https://payoneer.me/TON_COMPTE" target="_blank" class="btn">Payer maintenant</a>
     </div>
     <div class="card">
       <img src="produit2.jpg" alt="Produit 2">
       <h3>Site e-commerce</h3>
       <p>€99.99</p>
-      <a href="#" class="btn">Acheter</a>
+      <a href="https://payoneer.me/TON_COMPTE" target="_blank" class="btn">Payer maintenant</a>
     </div>
     <div class="card">
       <img src="produit3.jpg" alt="Produit 3">
       <h3>Landing page</h3>
       <p>€29.99</p>
-      <a href="#" class="btn">Acheter</a>
+      <a href="https://payoneer.me/TON_COMPTE" target="_blank" class="btn">Payer maintenant</a>
     </div>
   </div>
 </section>
@@ -93,7 +63,7 @@
   <form>
     <input type="text" name="nom" placeholder="Votre nom" required>
     <input type="email" name="email" placeholder="Votre email" required>
-    <textarea name="message" placeholder="Votre message" rows="4"></textarea>
+    <textarea name="message" placeholder="Votre message" rows="4" required></textarea>
     <button type="submit" class="btn">Envoyer</button>
   </form>
 </section>
@@ -106,12 +76,3 @@
 
 </body>
 </html>
-<div class="filters">
-    <button class="filter-btn" data-filter="all">Tous</button>
-    <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
-    <button class="filter-btn" data-filter="vitrine">Vitrine</button>
-</div>
-<div class="portfolio-items">
-    <div class="portfolio-item ecommerce">...</div>
-    <div class="portfolio-item vitrine">...</div>
-</div>
