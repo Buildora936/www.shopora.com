@@ -8,7 +8,32 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="auth-buttons">
+  <button id="loginBtn">Connexion</button>
+  <button id="signupBtn">Inscription</button>
+</div>
 
+<!-- MODAL LOGIN -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeLogin">&times;</span>
+    <h2>Connexion</h2>
+    <input type="text" id="loginUser" placeholder="Nom d'utilisateur">
+    <input type="password" id="loginPass" placeholder="Mot de passe">
+    <button id="loginSubmit">Se connecter</button>
+  </div>
+</div>
+
+<!-- MODAL SIGNUP -->
+<div id="signupModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeSignup">&times;</span>
+    <h2>Inscription</h2>
+    <input type="text" id="signupUser" placeholder="Nom d'utilisateur">
+    <input type="password" id="signupPass" placeholder="Mot de passe">
+    <button id="signupSubmit">S’inscrire</button>
+  </div>
+</div>
 <!-- HEADER -->
 <header>
   <div class="container">
