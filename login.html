@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Connexion - Shopora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#ff6b6b;
+    --accent-2:#ff9478;
+    --bg:#f7f8fb;
+    --card:#ffffff;
+    --muted:#666;
+    --success:#28a745;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial;
+    background: linear-gradient(135deg,#fff 0%, #f4f7fb 50%, #f0f4ff 100%);
+    color:#222;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+
+  .wrap{
+    display:grid;
+    grid-template-columns: 420px 1fr;
+    gap:28px;
+    align-items:center;
+    width:100%;
+    max-width:980px;
+  }
+
+  /* Left: branding / pitch */
+  .panel-brand{
+    background: linear-gradient(180deg, rgba(255,107,107,0.12), rgba(255,148,120,0.06));
+    border-radius:16px;
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    box-shadow:0 8px 30px rgba(16,24,40,0.06);
+  }
+  .brand-logo{
+    font-weight:700;
+    color:var(--accent);
+    font-size:28px;
+    letter-spacing:1px;
+  }
+  .brand-sub{
+    color:var(--muted);
+    line-height:1.4;
+  }
+  .features{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:auto;
+  }
+  .feature{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+  }
+  .dot{
+    width:42px;height:42px;border-radius:8px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    color:white;display:flex;align-items:center;justify-content:center;font-weight:700;
+    box-shadow:0 6px 18px rgba(255,107,107,0.12);
+  }
+  .feature p{margin:0;color:#444;font-size:0.95rem}
+
+  /* Right: card with auth */
+  .card{
+    background:var(--card);
+    border-radius:16px;
+    padding:28px;
+    box-shadow:0 10px 30px rgba(16,24,40,0.06);
+  }
+  .card h2{
+    margin:0 0 8px 0;
+    font-size:20px;
+  }
+  .card p.lead{
+    margin:0 0 18px 0;color:var(--muted);
+    font-size:0.95rem;
+  }
+
+  .tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:18px;
+  }
+  .tab-btn{
+    flex:1;
+    text-align:center;
+    padding:10px 12px;
+    border-radius:10px;
+    border:1px solid transparent;
+    background:transparent;
+    cursor:pointer;
+    font-weight:600;
+  }
+  .tab-btn.active{
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    color:white;
+    border:1px solid rgba(0,0,0,0.04);
+  }
+
+  form{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  input[type="text"], input[type="password"], input[type="email"]{
+    width:100%;
+    padding:12px 14px;
+    border-radius:10px;
+    border:1px solid #e6e9ef;
+    background:#fafbfd;
+    outline:none;
+    font-size:0.98rem;
+  }
+  .row{
+    display:flex;gap:12px;
+  }
+  .small{
+    font-size:0.85rem;color:var(--muted);
+  }
+
+  .btn{
+    display:inline-block;
+    padding:12px 14px;
+    border-radius:10px;
+    border:none;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 10px 18px rgba(255,107,107,0.12);
+  }
+  .btn.secondary{
+    background:#fff;border:1px solid #e6e9ef;color:var(--accent);
+    box-shadow:none;font-weight:600;
+  }
+
+  .helper{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+  }
+
+  .msg{ padding:10px;border-radius:8px;font-size:0.95rem; display:none; }
+  .msg.success{ background: #e9f7ef; color:var(--success); border:1px solid rgba(40,167,69,0.08) }
+  .msg.error{ background:#fff0f0;color:#b00020;border:1px solid rgba(176,0,32,0.06) }
+
+  /* small footer link */
+  .text-center{ text-align:center; font-size:0.9rem; color:var(--muted); margin-top:14px }
+
+  /* responsive */
+  @media (max-width:880px){
+    .wrap{ grid-template-columns: 1fr; }
+    .panel-brand{ order:2 }
+    .card{ order:1 }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- Left: branding -->
+  <div class="panel-brand" aria-hidden="false">
+    <div class="brand-logo">Shopora</div>
+    <div class="brand-sub">
+      <strong>Obtenez votre site professionnel</strong><br>
+      Vendez en ligne rapidement — design premium, responsive et prêt à personnaliser.
+    </div>
+
+    <div class="features">
+      <div class="feature"><div class="dot">S</div><p><strong>Site clé en main</strong><br><span style="color:var(--muted)">Fichiers HTML/CSS/JS livrés</span></p></div>
+      <div class="feature"><div class="dot">⚡</div><p><strong>Rapide & optimisé</strong><br><span style="color:var(--muted)">Performance et SEO basique intégrés</span></p></div>
+      <div class="feature"><div class="dot">🤝</div><p><strong>Support</strong><br><span style="color:var(--muted)">Assistance d'installation (optionnel)</span></p></div>
+    </div>
+  </div>
+
+  <!-- Right: auth card -->
+  <div class="card" role="region" aria-label="Connexion Shopora">
+    <h2>Se connecter à Shopora</h2>
+    <p class="lead">Accède à ton espace client pour gérer commandes et téléchargements.</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" id="tabLogin" type="button" aria-selected="true">Connexion</button>
+      <button class="tab-btn" id="tabSignup" type="button" aria-selected="false">Inscription</button>
+    </div>
+
+    <!-- message -->
+    <div id="message" class="msg" role="status" aria-live="polite"></div>
+
+    <!-- LOGIN FORM -->
+    <form id="loginForm" autocomplete="on" novalidate>
+      <input id="loginEmail" type="email" placeholder="Email" required>
+      <input id="loginPass" type="password" placeholder="Mot de passe" required>
+      <div class="helper">
+        <label class="small"><input id="rememberMe" type="checkbox"> Se souvenir</label>
+        <a href="#" id="forgot" class="small" style="text-decoration:none;color:var(--accent)">Mot de passe oublié ?</a>
+      </div>
+      <button id="doLogin" class="btn" type="button">Se connecter</button>
+      <div class="text-center small">ou</div>
+      <button id="demoLogin" type="button" class="btn secondary">Connexion de démonstration</button>
+    </form>
+
+    <!-- SIGNUP FORM (hidden) -->
+    <form id="signupForm" style="display:none" autocomplete="on" novalidate>
+      <input id="signupName" type="text" placeholder="Nom complet" required>
+      <input id="signupEmail" type="email" placeholder="Email" required>
+      <input id="signupPass" type="password" placeholder="Mot de passe (min 6 caractères)" required>
+      <div style="display:flex;gap:8px;">
+        <button id="doSignup" type="button" class="btn">S'inscrire</button>
+        <button id="cancelSignup" type="button" class="btn secondary">Annuler</button>
+      </div>
+    </form>
+
+    <div class="text-center small">En utilisant Shopora, tu acceptes nos <a href="#" style="color:var(--accent);text-decoration:none">conditions</a>.</div>
+  </div>
+
+</div>
+
+<script>
+/*
+  Simple auth demo:
+  - Utilise Web Crypto API pour hasher le mot de passe (SHA-256) avant de stocker dans localStorage.
+  - Stocke: shopora_user_email => email, shopora_user_hash => hex hash.
+  - Ne pas utiliser pour production (côté client uniquement).
+*/
+
+// helpers
+function showMessage(text,type='success'){
+  const msg = document.getElementById('message');
+  msg.textContent = text;
+  msg.className = 'msg ' + (type==='error' ? 'error' : 'success');
+  msg.style.display = 'block';
+  setTimeout(()=> { msg.style.display = 'none'; }, 5000);
+}
+function bufferToHex(buffer){
+  return Array.from(new Uint8Array(buffer)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+async function hashText(text){
+  const enc = new TextEncoder();
+  const data = enc.encode(text);
+  const hash = await crypto.subtle.digest('SHA-256', data);
+  return bufferToHex(hash);
+}
+
+// tab switching
+const tabLogin = document.getElementById('tabLogin');
+const tabSignup = document.getElementById('tabSignup');
+const loginForm = document.getElementById('loginForm');
+const signupForm = document.getElementById('signupForm');
+
+tabLogin.addEventListener('click', ()=> {
+  tabLogin.classList.add('active'); tabSignup.classList.remove('active');
+  loginForm.style.display = 'flex'; signupForm.style.display='none';
+});
+tabSignup.addEventListener('click', ()=> {
+  tabSignup.classList.add('active'); tabLogin.classList.remove('active');
+  signupForm.style.display = 'flex'; loginForm.style.display='none';
+});
+
+// signup
+document.getElementById('doSignup').addEventListener('click', async ()=>{
+  const name = document.getElementById('signupName').value.trim();
+  const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+  const pass = document.getElementById('signupPass').value;
+
+  if(!name || !email || !pass){ showMessage('Remplis tous les champs.', 'error'); return; }
+  if(pass.length < 6){ showMessage('Mot de passe trop court (min 6).', 'error'); return; }
+
+  const hash = await hashText(pass);
+  // save to localStorage (demo)
+  localStorage.setItem('shopora_user_email', email);
+  localStorage.setItem('shopora_user_name', name);
+  localStorage.setItem('shopora_user_hash', hash);
+  showMessage('Inscription réussie — tu peux maintenant te connecter.', 'success');
+  // switch to login
+  tabLogin.click();
+});
+
+// cancel signup
+document.getElementById('cancelSignup').addEventListener('click', ()=>{
+  tabLogin.click();
+});
+
+// login
+document.getElementById('doLogin').addEventListener('click', async ()=>{
+  const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+  const pass = document.getElementById('loginPass').value;
+  if(!email || !pass){ showMessage('Remplis email et mot de passe.', 'error'); return; }
+
+  const storedEmail = localStorage.getItem('shopora_user_email');
+  const storedHash = localStorage.getItem('shopora_user_hash');
+
+  if(!storedEmail || !storedHash){ showMessage('Aucun compte trouvé — inscris‑toi d’abord.', 'error'); tabSignup.click(); return; }
+
+  const hash = await hashText(pass);
+  if(email === storedEmail && hash === storedHash){
+    showMessage('Connexion réussie — bienvenue '+(localStorage.getItem('shopora_user_name')||'!'), 'success');
+    // simulate authenticated state (example: redirect)
+    setTimeout(()=> {
+      // redirect vers dashboard ou page protégée (ici on reste)
+      // window.location.href = '/dashboard.html';
+    }, 900);
+  } else {
+    showMessage('Email ou mot de passe incorrect.', 'error');
+  }
+});
+
+// demo login (auto create demo account if absent)
+document.getElementById('demoLogin').addEventListener('click', async ()=>{
+  if(!localStorage.getItem('shopora_demo_created')){
+    const demoEmail = 'demo@shopora.local';
+    const demoPass = 'demopass';
+    const demoHash = await hashText(demoPass);
+    localStorage.setItem('shopora_user_email', demoEmail);
+    localStorage.setItem('shopora_user_name', 'Client Démo');
+    localStorage.setItem('shopora_user_hash', demoHash);
+    localStorage.setItem('shopora_demo_created','1');
+  }
+  document.getElementById('loginEmail').value = localStorage.getItem('shopora_user_email');
+  document.getElementById('loginPass').value = 'demopass';
+  document.getElementById('doLogin').click();
+});
+
+// forgot (simple)
+document.getElementById('forgot').addEventListener('click', (e)=>{
+  e.preventDefault();
+  const stored = localStorage.getItem('shopora_user_email');
+  if(!stored){ showMessage('Aucun compte enregistré.', 'error'); return; }
+  showMessage('Pour réinitialiser, contacte le support (demo).', 'success');
+});
+</script>
+</body>
+</html>
