@@ -240,3 +240,36 @@ footer a:hover {
 @keyframes fadeIn {
   to { opacity: 1; }
 }
+.hero-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #ff6b6b, #ff9478);
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: #ff6b6b;
+  border: 2px solid #ff6b6b;
+}
+
+.btn-secondary:hover {
+  background: #ff6b6b;
+  color: white;
+}
