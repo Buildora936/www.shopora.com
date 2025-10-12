@@ -312,14 +312,14 @@ document.getElementById('doLogin').addEventListener('click', async ()=>{
   if(!storedEmail || !storedHash){ showMessage('Aucun compte trouvé — inscris‑toi d’abord.', 'error'); tabSignup.click(); return; }
 
   const hash = await hashText(pass);
-  if(email === storedEmail && hash === storedHash){
+ if(email === storedEmail && hash === storedHash){
     showMessage('Connexion réussie — bienvenue '+(localStorage.getItem('shopora_user_name')||'!'), 'success');
-    // simulate authenticated state (example: redirect)
+    // redirection vers la page d’accueil après 1 seconde
     setTimeout(()=> {
-      // redirect vers dashboard ou page protégée (ici on reste)
-      // window.location.href = '/dashboard.html';
-    }, 900);
-  } else {
+      window.location.href = 'index.html'; // <-- ici ton fichier d’accueil
+    }, 1000);
+  } 
+  else {
     showMessage('Email ou mot de passe incorrect.', 'error');
   }
 });
