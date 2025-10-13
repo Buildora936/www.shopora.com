@@ -218,4 +218,79 @@ send.onclick = async () => {
 
   console.log("✅ Firebase est connecté avec succès à Shopora !");
 </script>
+<!-- ===============================
+     🔐 Firebase Auth (Login / Signup)
+================================== -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+
+  // ✅ Reprendre la même configuration que tout à l’heure
+  const firebaseConfig = {
+    apiKey: "AIzaSyCCcgFUdsIEuBe4PyGNgXveelAdT69QhTQ",
+    authDomain: "shopora-f21c8.firebaseapp.com",
+    projectId: "shopora-f21c8",
+    storageBucket: "shopora-f21c8.firebasestorage.app",
+    messagingSenderId: "675896051305",
+    appId: "1:675896051305:web:820cdea18bd76d897e44f8",
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // ✅ Inscription
+  async function registerUser(email, password) {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      alert("✅ Compte créé avec succès !");
+      console.log(userCredential.user);
+    } catch (error) {
+      alert("Erreur : " + error.message);
+    }
+  }
+
+  // ✅ Connexion
+  async function loginUser(email, password) {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      alert("✅ Connexion réussie !");
+      console.log(userCredential.user);
+    } catch (error) {
+      alert("Erreur : " + error.message);
+    }
+  }
+
+  // ✅ Déconnexion
+  function logoutUser() {
+    signOut(auth).then(() => {
+      alert("👋 Déconnexion réussie !");
+    }).catch((error) => {
+      alert("Erreur : " + error.message);
+    });
+  }
+
+  // ✅ Vérifier si un utilisateur est connecté
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      console.log("Utilisateur connecté :", user.email);
+    } else {
+      console.log("Aucun utilisateur connecté");
+    }
+  });
+
+  // 🔘 Lier aux boutons HTML
+  document.getElementById("registerBtn")?.addEventListener("click", () => {
+    const email = document.getElementById("registerEmail").value;
+    const password = document.getElementById("registerPassword").value;
+    registerUser(email, password);
+  });
+
+  document.getElementById("loginBtn")?.addEventListener("click", () => {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+    loginUser(email, password);
+  });
+
+  document.getElementById("logoutBtn")?.addEventListener("click", logoutUser);
+</script>
 </body>
