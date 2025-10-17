@@ -47,3 +47,17 @@ loginSubmitPro.onclick = () => {
     authModalPro.style.display = 'none';
   } else alert('Nom d’utilisateur ou mot de passe incorrect !');
 };
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(name, price) {
+  cart.push({ name, price });
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  alert(name + " a été ajouté au panier !");
+}
+
+function updateCartCount() {
+  document.getElementById("cart-count").innerText = cart.length;
+}
+
+window.onload = updateCartCount;
