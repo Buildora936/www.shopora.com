@@ -1,3 +1,23 @@
+<script>
+// --- Fonction pour ajouter un produit au panier ---
+function ajouterAuPanier(nom, prix, image) {
+  let panier = JSON.parse(localStorage.getItem("panier")) || [];
+  panier.push({ nom, prix, image });
+  localStorage.setItem("panier", JSON.stringify(panier));
+  alert(nom + " a été ajouté au panier !");
+}
+
+// --- Exemple d'utilisation ---
+document.querySelectorAll(".product-card button").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const card = e.target.closest(".product-card");
+    const nom = card.querySelector("h3").innerText;
+    const prix = card.querySelector(".price").innerText;
+    const image = card.querySelector("img").src;
+    ajouterAuPanier(nom, prix, image);
+  });
+});
+</script>
 <section class="products">
   <div class="product">
     <img src="img/tennis.jpg" alt="Tennis">
