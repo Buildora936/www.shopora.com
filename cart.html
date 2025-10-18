@@ -1,3 +1,51 @@
+<script>
+// --- Fonction pour afficher le panier ---
+function afficherPanier() {
+  const panier = JSON.parse(localStorage.getItem("panier")) || [];
+  const container = document.querySelector(".cart-container");
+  let total = 0;
+
+  container.innerHTML = "";
+
+  panier.forEach((produit, index) => {
+    const prixNum = parseFloat(produit.prix.replace("$", ""));
+    total += prixNum;
+
+    const itemHTML = `
+      <div class="cart-item">
+        <img src="${produit.image}" alt="${produit.nom}">
+        <h4>${produit.nom}</h4>
+        <div class="price">${produit.prix}</div>
+        <button onclick="supprimerDuPanier(${index})">🗑️</button>
+      </div>
+    `;
+    container.innerHTML += itemHTML;
+  });
+
+  container.innerHTML += `
+    <div class="cart-total">Total : $${total.toFixed(2)}</div>
+    <button class="checkout-btn" onclick="viderPanier()">Vider le panier</button>
+  `;
+}
+
+// --- Supprimer un produit ---
+function supprimerDuPanier(index) {
+  let panier = JSON.parse(localStorage.getItem("panier")) || [];
+  panier.splice(index, 1);
+  localStorage.setItem("panier", JSON.stringify(panier));
+  afficherPanier();
+}
+
+// --- Vider le panier ---
+function viderPanier() {
+  localStorage.removeItem("panier");
+  afficherPanier();
+}
+
+// Charger le panier automatiquement
+window.onload = afficherPanier;
+</script>
+</body>
 <h2>Votre panier</h2>
 <ul id="cart-list"></ul>
 <p id="total"></p>
